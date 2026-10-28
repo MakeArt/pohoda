@@ -5,7 +5,6 @@
  * Licensed under the MIT License
  * (c) RIESENIA.com
  */
-
 declare(strict_types=1);
 
 namespace Riesenia\Pohoda\Bank;
@@ -16,14 +15,11 @@ use Riesenia\Pohoda\Document\Header as DocumentHeader;
 class Header extends DocumentHeader
 {
     /** @var string[] */
-    protected $_refElements = ['account', 'accounting', 'classificationVAT', 'classificationKVDPH', 'paymentAccount', 'centre', 'activity', 'contract', 'MOSS', 'evidentiaryResourcesMOSS'];
+    protected $_refElements = ['extId', 'account', 'accounting', 'classificationVAT', 'classificationKVDPH', 'paymentAccount', 'centre', 'activity', 'contract', 'MOSS', 'evidentiaryResourcesMOSS'];
 
     /** @var string[] */
-    protected $_elements = ['bankType', 'account', 'statementNumber', 'symVar', 'dateStatement', 'datePayment', 'accounting', 'classificationVAT', 'classificationKVDPH', 'text', 'partnerIdentity', 'myIdentity', 'paymentAccount', 'symConst', 'symSpec', 'symPar', 'centre', 'activity', 'contract', 'MOSS', 'evidentiaryResourcesMOSS', 'accountingPeriodMOSS', 'note', 'intNote'];
+    protected $_elements = ['extId', 'bankType', 'account', 'statementNumber', 'symVar', 'dateStatement', 'datePayment', 'accounting', 'classificationVAT', 'classificationKVDPH', 'text', 'partnerIdentity', 'myIdentity', 'paymentAccount', 'symConst', 'symSpec', 'symPar', 'centre', 'activity', 'contract', 'MOSS', 'evidentiaryResourcesMOSS', 'accountingPeriodMOSS', 'note', 'intNote'];
 
-    /**
-     * {@inheritdoc}
-     */
     public function __construct(array $data, string $ico, bool $resolveOptions = true)
     {
         // process report
@@ -34,9 +30,6 @@ class Header extends DocumentHeader
         parent::__construct($data, $ico, $resolveOptions);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function _configureOptions(OptionsResolver $resolver)
     {
         parent::_configureOptions($resolver);

@@ -5,7 +5,6 @@
  * Licensed under the MIT License
  * (c) RIESENIA.com
  */
-
 declare(strict_types=1);
 
 namespace spec\Riesenia\Pohoda;
@@ -87,6 +86,15 @@ class ListRequestSpec extends ObjectBehavior
         $this->getXML()->asXML()->shouldReturn('<lst:listIntParamRequest version="2.0"><lst:requestIntParam/></lst:listIntParamRequest>');
     }
 
+    public function it_creates_correct_xml_for_gpsr()
+    {
+        $this->beConstructedWith([
+            'type' => 'Gpsr'
+        ], '123');
+
+        $this->getXML()->asXML()->shouldReturn('<lst:listGPSRRequest version="2.0" GPSRVersion="2.0"><lst:requestGPSR/></lst:listGPSRRequest>');
+    }
+
     public function it_creates_correct_xml_for_user_lists()
     {
         $this->beConstructedWith([
@@ -113,7 +121,7 @@ class ListRequestSpec extends ObjectBehavior
 
         $this->addQueryFilter([
             'filter' => '(FA.DatSave>=CONVERT(DATETIME, \'01/31/2025 16:30:00\', 101) OR FA.DatLikv>=CONVERT(DATETIME, \'01/31/2025\', 101))',
-            'textName' => '(Uloženo >= 2025-01-31 16:30:00; Likv. >= 2025-01-31)',
+            'textName' => '(Uloženo >= 2025-01-31 16:30:00; Likv. >= 2025-01-31)'
         ])->getXML()->asXML()->shouldReturn('<lst:listInvoiceRequest version="2.0" invoiceVersion="2.0" invoiceType="issuedInvoice"><lst:requestInvoice><ftr:queryFilter><ftr:filter>(FA.DatSave&gt;=CONVERT(DATETIME, \'01/31/2025 16:30:00\', 101) OR FA.DatLikv&gt;=CONVERT(DATETIME, \'01/31/2025\', 101))</ftr:filter><ftr:textName>(Uloženo &gt;= 2025-01-31 16:30:00; Likv. &gt;= 2025-01-31)</ftr:textName></ftr:queryFilter></lst:requestInvoice></lst:listInvoiceRequest>');
     }
 

@@ -5,7 +5,6 @@
  * Licensed under the MIT License
  * (c) RIESENIA.com
  */
-
 declare(strict_types=1);
 
 namespace spec\Riesenia\Pohoda;
@@ -19,7 +18,7 @@ class StockTransferSpec extends ObjectBehavior
         $this->beConstructedWith([
             'date' => '2015-01-10',
             'store' => [
-                'ids' => 'MAIN',
+                'ids' => 'MAIN'
             ],
             'text' => 'Prevodka na MAIN',
             'partnerIdentity' => [
@@ -29,7 +28,7 @@ class StockTransferSpec extends ObjectBehavior
                 ]
             ],
             'activity' => [
-                'id' => 1,
+                'id' => 1
             ],
             'intNote' => 'Note'
         ], '123');
