@@ -82,11 +82,6 @@ class Header extends Agenda
 
     /**
      * Add related link.
-     *
-     * @param string $url
-     * @param string $description
-     * @param int|null $order
-     * @return void
      */
     public function addRelatedLink(string $url, string $description = '', ?int $order = null)
     {
@@ -97,7 +92,7 @@ class Header extends Agenda
         $this->_data['relatedLinks'][] = new RelatedLink([
             'addressURL' => $url,
             'description' => $description,
-            'order' => $order === null ? ++$this->_linksCounter : $order,
+            'order' => $order === null ? ++$this->_linksCounter : $order
         ], $this->_ico);
     }
 
