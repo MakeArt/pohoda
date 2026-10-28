@@ -98,13 +98,15 @@ class Stock extends Agenda
     /**
      * Add related link.
      *
-     * @param string $url
-     * @param string $description
+     * @param string   $url
+     * @param string   $description
+     * @param int|null $order
+     *
      * @return $this
      */
-    public function addRelatedLink(string $url, string $description = ''): self
+    public function addRelatedLink(string $url, string $description = '', ?int $order = null): self
     {
-        $this->_data['header']->addRelatedLink($url, $description);
+        $this->_data['header']->addRelatedLink($url, $description, $order);
 
         return $this;
     }

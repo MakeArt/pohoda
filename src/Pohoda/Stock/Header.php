@@ -31,6 +31,9 @@ class Header extends Agenda
     /** @var int */
     protected $_imagesCounter = 0;
 
+    /** @var int */
+    protected $_linksCounter = 0;
+
     public function __construct(array $data, string $ico, bool $resolveOptions = true)
     {
         // process intrastat
@@ -80,12 +83,12 @@ class Header extends Agenda
     /**
      * Add related link.
      *
-     * @param string   $url
-     * @param string   $description
-     *
+     * @param string $url
+     * @param string $description
+     * @param int|null $order
      * @return void
      */
-    public function addRelatedLink(string $url, string $description = '')
+    public function addRelatedLink(string $url, string $description = '', ?int $order = null)
     {
         if (!isset($this->_data['relatedLinks'])) {
             $this->_data['relatedLinks'] = [];
@@ -93,7 +96,8 @@ class Header extends Agenda
 
         $this->_data['relatedLinks'][] = new RelatedLink([
             'addressURL' => $url,
-            'description' => $description
+            'description' => $description,
+            'order' => $order === null ? ++$this->_linksCounter : $order,
         ], $this->_ico);
     }
 

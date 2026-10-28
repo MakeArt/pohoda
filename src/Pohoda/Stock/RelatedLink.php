@@ -22,7 +22,7 @@ class RelatedLink extends Agenda
     {
         $xml = $this->_createXML()->addChild('stk:relatedLink', '', $this->_namespace('stk'));
 
-        $this->_addElements($xml, ['addressURL', 'description'], 'stk');
+        $this->_addElements($xml, ['addressURL', 'description', 'order'], 'stk');
 
         return $xml;
     }
@@ -33,11 +33,12 @@ class RelatedLink extends Agenda
     protected function _configureOptions(OptionsResolver $resolver)
     {
         // available options
-        $resolver->setDefined(['addressURL', 'description']);
+        $resolver->setDefined(['addressURL', 'description', 'order']);
 
         // validate / format options
         $resolver->setRequired('addressURL');
         $resolver->setNormalizer('addressURL', $resolver->getNormalizer('string255'));
         $resolver->setNormalizer('description', $resolver->getNormalizer('string90'));
+        $resolver->setNormalizer('order', $resolver->getNormalizer('int'));
     }
 }

@@ -104,6 +104,14 @@ class StockSpec extends ObjectBehavior
         $this->getXML()->asXML()->shouldReturn('<stk:stock version="2.0"><stk:stockHeader>' . $this->_defaultHeader() . '<stk:categories><stk:idCategory>1</stk:idCategory><stk:idCategory>2</stk:idCategory></stk:categories></stk:stockHeader></stk:stock>');
     }
 
+    public function it_can_set_related_links()
+    {
+        $this->addRelatedLink('https://riesenia.com');
+        $this->addRelatedLink('https://pohoda.riesenia.com', 'RIESENIA Pohoda', 3);
+
+        $this->getXML()->asXML()->shouldReturn('<stk:stock version="2.0"><stk:stockHeader>' . $this->_defaultHeader() . '<stk:relatedLinks><stk:relatedLink><stk:addressURL>https://riesenia.com</stk:addressURL><stk:description/><stk:order>1</stk:order></stk:relatedLink><stk:relatedLink><stk:addressURL>https://pohoda.riesenia.com</stk:addressURL><stk:description>RIESENIA Pohoda</stk:description><stk:order>3</stk:order></stk:relatedLink></stk:relatedLinks></stk:stockHeader></stk:stock>');
+    }
+
     public function it_can_set_int_parameters()
     {
         $this->addIntParameter([
